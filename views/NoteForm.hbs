@@ -1,0 +1,46 @@
+{{>Navbar}}
+
+
+{{#if note}}
+<form action="/note/{{note._id}}" method="post" >
+
+  <div class="container 2xl:w-2/6 xl:w-2/4 lg:w-2/4 md:w-2/4 sm:w-2/4 mx-auto sm:mt-10 mt-4 w-11/12 sm:h-4/6 h-4/6 shadow-lg bg-white">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+
+    <div class="flex justify-center">
+      <input type="text" name="title" placeholder="Título" class="focus:outline-none  border-b border-black-500 text-2xl w-11/12 text-center mt-2" value="{{note.title}}"/>
+    </div>
+    
+    <div class="flex justify-center h-4/5">
+      <textarea type="text" name="description" class="focus:outline-none text-lg w-11/12 mt-2 h-5/5" style="resize: none;" placeholder="Escriba su nota aquí"/>{{note.description}}</textarea>      
+    </div>
+    
+    <div class="flex grid content-end h-1/5">
+      <div>
+        <button class="bg-gray-600 hover:bg-gray-700 px-5 py-2 text-sm leading-5 rounded-md font-semibold text-white float-right" type="submit">Guardar</button>        
+      </div>   
+    </div>
+  </div>
+</form>
+{{else}}
+  <form action="/new" method="post" >
+
+  <div class="container 2xl:w-2/6 xl:w-2/4 lg:w-2/4 md:w-2/4 sm:w-2/4 mx-auto sm:mt-10 mt-4 w-11/12 sm:h-4/6 h-4/6 shadow-lg bg-white">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+
+    <div class="flex justify-center">
+      <input type="text" name="title" placeholder="Título" class="focus:outline-none  border-b border-black-500 text-2xl w-11/12 text-center mt-2"/>
+    </div>
+    
+    <div class="flex justify-center h-4/5">
+      <textarea type="text" name="description" class="focus:outline-none text-lg w-11/12 mt-2 h-5/5" style="resize: none;" placeholder="Escriba su nota aquí" /></textarea>      
+    </div>
+    
+    <div class="flex grid content-end h-1/5">
+      <div>
+        <button class="bg-gray-600 hover:bg-gray-700 px-5 py-2 text-sm leading-5 rounded-md font-semibold text-white float-right" type="submit">Guardar</button>        
+      </div>   
+    </div>
+  </div>
+</form>
+{{/if}}

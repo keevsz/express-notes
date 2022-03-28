@@ -1,0 +1,30 @@
+<div class="rounded overflow-hidden shadow-md w-auto mx-2 my-2 cursor-pointer">
+  <div class="px-6 py-5 h-56 relative">
+    <button
+      class="absolute -top-4 -right-4 shadow-sm z-20 bg-red-500 w-12 h-12 hover:bg-red-800 rounded-full"
+      onclick="location.href = '/delete/{{item._id}}';"
+    >
+      <p class="text-2xl font-mono text-white absolute top-3 right-6">x</p>
+    </button>
+    <a href="/note/{{item._id}}">
+
+      <div class="truncate font-bold text-xl mb-2">
+        {{item.title}}
+      </div>
+      <div class="text-sm -mt-2">
+        {{formatDate item.date}}
+      </div>
+      <hr />
+      <div class="text-lg overflow-hidden z-0 mt-2">
+        {{item.description}}
+      </div>
+      <div
+        class="blur h-8 w-full absolute inset-x-0 bottom-0 mx-auto z-10 bg-white"
+      >
+      </div>
+      <div class="h-2 w-5/6 absolute inset-x-0 bottom-0 mx-auto z-10 bg-white">
+      </div>
+    </a>
+
+  </div>
+</div>

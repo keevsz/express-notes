@@ -1,0 +1,32 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* width */ ::-webkit-scrollbar { width: 5px; } /* Track */
+      ::-webkit-scrollbar-track { background: #f1f1f1; } /* Handle */
+      ::-webkit-scrollbar-thumb { background: #888; } /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body style="background-color: #F7F9FB;">
+    {{#each mensajes}}
+
+      <div
+        class="absolute bottom-0 right-3 bg-gray-300 rounded-lg py-5 px-6 mb-4 text-base text-gray-800 mb-3 animate__animated animate__fadeOut animate__delay-2s"
+        role="alert"
+      >
+        {{this.msg}}
+      </div>
+    {{/each}}
+
+    {{{body}}}
+  </body>
+</html>
