@@ -15,13 +15,11 @@ require("dotenv").config()
 
 const app = express()
 
-//Habilitando sesiones flash
 app.use(flash())
 app.use(cors())
 
 app.set("trust proxy", 1)
 
-//Configurando sesiones
 app.use(
   session({
     secret: process.env.SESSIONSECRET,
@@ -49,7 +47,6 @@ passport.deserializeUser(async (user, done) => {
 })
 //---------
 
-//Configuración de handlebars
 app.engine(
   ".hbs",
   engine({
@@ -66,33 +63,20 @@ app.engine(
 )
 app.set("view engine", ".hbs")
 app.set("views", "./views")
-//---------
 
-//Habilitando frontend y formularios
 app.use(express.static(__dirname + "/public"))
 app.use(express.urlencoded({ extended: true }))
-//---------
 
-//Habilitando rutas
 app.use("/", require("./routes/HomeRoute"))
 app.use("/", require("./routes/AuthRoute"))
-//---------
 
-//Habilitando el Csrf token global
 app.use(csrf())
 app.use((req, res, next) => {
   res.locals.csrfToken = req.csrfToken()
   next()
 })
 
-//Habilitando mongoSanitize
 app.use(mongoSanitize())
-
-//Conectando a mongodb
-// app.use(() => {
-//   database
-// })
-//---------
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
